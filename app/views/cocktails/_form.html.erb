@@ -1,6 +1,5 @@
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :description %>
-  <%= f.input :ingredient, collection: @ingredients  %>
+<%= simple_form_for @cocktail do |f| %>
+  <%= f.input :name, label: false, placeholder: 'Input name' %>
+  <%= f.input :photo, as: :attachinary %>
   <%= f.submit "Add", class: "btn btn-primary" %>
 <% end %>
-<%= link_to "back home", "root_path" %>

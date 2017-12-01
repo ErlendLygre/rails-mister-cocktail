@@ -2,9 +2,19 @@
 <ul>
   <% @cocktail.doses.each do |dose| %>
     <li>
-      <h3> <%= dose.description %> of <%= dose.ingredient.name %> </h3>
+      <h3>
+        <%= dose.description %> of <%= dose.ingredient.name %>
+        <%= link_to 'Delete',  dose_path(dose), method: :delete %>
+      </h3>
     </li>
   <% end %>
 </ul>
-<h2><%= link_to "Add a dose", new_cocktail_dose_path(@cocktail) %></h2>
 
+<% if @cocktail.photo? %>
+  <%= cl_image_tag @cocktail.photo.path, width: 200, height: 300, crop: :fill %>
+<% end %>
+<h3>
+  <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail) %> |
+  <%= link_to 'Delete cocktail', cocktail_path(@cocktail), method: :delete %> |
+  <%= link_to 'Edit cocktail', edit_cocktail_path(@cocktail) %>
+</h3>

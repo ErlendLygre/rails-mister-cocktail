@@ -17,7 +17,8 @@ class DosesController < ApplicationController
   end
 
   def destroy
-    @task.destroy
+    @dose = Dose.find(params[:id])
+    @dose.destroy
     redirect_to root_path
   end
 
